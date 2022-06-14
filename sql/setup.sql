@@ -14,7 +14,7 @@ INSERT INTO books (
 )
 
 VALUES 
-  ('Where The Wild Things Are', 2009),
+  ('Where The Wild Things Are', 1963),
   ('Goodnight Moon', 1947),
   ('The Very Hungry Caterpillar', 1969),
   ('Dream Big, Little One', 2018),
