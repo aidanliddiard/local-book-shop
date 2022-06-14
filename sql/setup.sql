@@ -1,5 +1,6 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
+DROP TABLE IF EXISTS authors_books;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS authors;
 
@@ -15,6 +16,15 @@ CREATE TABLE authors (
   dob DATE,
   pob VARCHAR
 );
+
+CREATE TABLE authors_books (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  author_id BIGINT,
+  book_id BIGINT,
+  FOREIGN KEY (author_id) REFERENCES authors(id),
+  FOREIGN KEY (book_id) REFERENCES books(id) 
+);
+
 
 INSERT INTO books (
   title,
@@ -59,4 +69,28 @@ VALUES
   ('Dr. Seuss', '1904-03-02', 'Springfield, MA'),
   ('M. L. Webb', NULL, NULL),
   ('Barney Saltzberg', '1955-04-30', NULL),
-  ('Kyle Lukoff', '1984-06-05', 'Skokie, IL')
+  ('Kyle Lukoff', '1984-06-05', 'Skokie, IL'),
+  ('Keith Graves', NULL, 'New Orleans, LA');
+
+  INSERT INTO authors_books (
+    author_id,
+    book_id
+  )
+  VALUES 
+  (1, 6),
+  (1, 8),
+  (1, 15),
+  (2, 1),
+  (3, 3),
+  (4, 4),
+  (5, 2),
+  (6, 5),
+  (7, 5),
+  (8, 7),
+  (9, 9),
+  (10, 10),
+  (11, 11),
+  (12, 12),
+  (13, 13),
+  (14, 14),
+  (15, 16)

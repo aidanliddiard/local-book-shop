@@ -10,7 +10,7 @@ describe('authors routes', () => {
 
   it('should return a list of authors', async () => {
     const res = await request(app).get('/authors');
-    expect(res.body.length).toEqual(14);
+    expect(res.body.length).toEqual(15);
     const marley = res.body.find((author) => author.id === '9');
     expect(marley).toHaveProperty('name', 'Cedella Marley');
   });
