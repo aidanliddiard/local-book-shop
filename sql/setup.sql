@@ -1,11 +1,19 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS authors;
 
 CREATE TABLE books (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   title VARCHAR NOT NULL,
   released INT NOT NULL
+);
+
+CREATE TABLE authors (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  dob DATE,
+  pob VARCHAR
 );
 
 INSERT INTO books (
@@ -30,3 +38,28 @@ VALUES
   ('When Aidan Became a Brother', 2019),
   ('If you Give a Mouse a Cookie', 1985),
   ('Frank Was a Monster Who Wanted to Dance', 1999);
+
+  INSERT INTO authors (
+    name, 
+    dob,
+    pob
+  )
+
+  VALUES 
+  ('Laura Numeroff', '1953-07-14', 'Brooklyn, New York'),
+  ('Maurice Sendak', '1928-06-10', 'Brooklyn, New York'),
+  ('Eric Carle', '1929-06-25', 'Syracuse, NY'),
+  ('Vashti Harrison', NULL, 'Onley, VA'),
+  ('Margaret Wise Brown', '1910-05-23', 'Brooklyn, New York'),
+  ('Bill Martin, Jr.', '1916-03-20', 'Hiawatha, KS'),
+  ('John Archambault', NULL, 'Pasadena, CA'),
+  ('David Shannon', '1959-10-05', 'Washington, D.C.'),
+  ('Cedella Marley', '1967-08-23', 'Kingston, Jamaica'),
+  ('Kevin Noble Maillard', NULL, NULL),
+  ('Dr. Seuss', '1904-03-02', 'Springfield, MA'),
+  ('M. L. Webb', NULL, NULL),
+  ('Barney Saltzberg', '1955-04-30', NULL),
+  ('Kyle Lukoff', '1984-06-05', 'Skokie, IL')
+
+
+
