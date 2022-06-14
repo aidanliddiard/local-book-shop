@@ -60,6 +60,3 @@ VALUES
   ('M. L. Webb', NULL, NULL),
   ('Barney Saltzberg', '1955-04-30', NULL),
   ('Kyle Lukoff', '1984-06-05', 'Skokie, IL')
-
-
-
