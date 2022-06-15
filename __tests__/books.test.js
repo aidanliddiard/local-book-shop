@@ -16,6 +16,21 @@ describe('books routes', () => {
     expect(wild).toHaveProperty('released', 1963);
   });
 
+  it('should return a book with the release date and an array of authors with ids and names', async () => {
+    const res = await request(app).get('/books/5');
+    expect(res.body.length).toEqual(1);
+    expect(res.body.book.title).toEqual('Chicka Chicka Boom Boom');
+    expect(res.body.released).toEqual(2012);
+    expect(res.body.authors.length).toEqual(2);
+    expect(res.body).toHaveProperty('authors');
+  });
+
+
+  {
+    title,
+    released,
+    authors: [{ id, name }], // author id and name
+}
   afterAll(() => {
     pool.end();
   });
