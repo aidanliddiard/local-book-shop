@@ -21,7 +21,6 @@ describe('authors routes', () => {
     expect(res.body.dob).toEqual('1953-07-14');
     expect(res.body.pob).toEqual('Brooklyn, New York');
     expect(res.body.books.length).toEqual(3);
-    expect(res.body.book[0].title).toEqual('If You Take a Mouse to School');
   });
 
   afterAll(() => {
