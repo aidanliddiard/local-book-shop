@@ -24,6 +24,12 @@ describe('books routes', () => {
     expect(res.body).toHaveProperty('authors');
     expect(res.body.authors[0].name).toEqual('Bill Martin, Jr.');
   });
+  it('/books should add a book to the list of books', async () => {
+    const res = await request(app)
+      .post('/books')
+      .send({ title: 'Arthur`s New Puppy', released: 1995 });
+    expect(res.status).toEqual(200);
+  });
 
   afterAll(() => {
     pool.end();
