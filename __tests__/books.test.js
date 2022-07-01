@@ -27,8 +27,16 @@ describe('books routes', () => {
   it('/books should add a book to the list of books', async () => {
     const res = await request(app)
       .post('/books')
-      .send({ title: 'Arthur`s New Puppy', released: 1995 });
+      .send({
+        title: 'If You Give a Pig a Pancake',
+        released: 1998,
+        authorId: [1],
+      });
     expect(res.status).toEqual(200);
+    expect(res.body.title).toEqual('If You Give a Pig a Pancake');
+
+    const { body } = await request(app).get(`/books/${res.body.id}`);
+    expect(body.authors[0].name).toEqual('Laura Numeroff');
   });
 
   afterAll(() => {
