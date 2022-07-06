@@ -23,6 +23,25 @@ describe('authors routes', () => {
     expect(res.body.books.length).toEqual(3);
   });
 
+  it('/authors should create a new author', async () => {
+    const resp = await request(app)
+      .post('/authors')
+      .send({ name: 'Marcus Pfister' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Marcus Pfister');
+  });
+
+  it('/authors should create a new author with their associated book', async () => {
+    const resp = await request(app)
+      .post('/authors')
+      .send({ name: 'Anonymous', bookId: [4] });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Anonymous');
+    const { body } = await request(app).get(`/authors/${resp.body.id}`);
+
+    expect(body.books[0].title).toEqual('Dream Big, Little One');
+  });
+
   afterAll(() => {
     pool.end();
   });
